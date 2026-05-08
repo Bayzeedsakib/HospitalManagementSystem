@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using BLL.DTOs;
+using DAL.EF.Tables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,17 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class MapperConfig
+    public class MapperConfig
     {
-    }
+        static MapperConfiguration config = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<Patient, PatientDTO>().ReverseMap();
+        });
+
+        public static Mapper GetMapper()
+        {
+            return new Mapper(config);
+        }
+    }  
+  
 }
