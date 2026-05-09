@@ -17,6 +17,11 @@ namespace DAL.Repositories
             this.db = db;
         }
 
+        public List<Patient> GetAll()
+        {
+            return db.Patients.ToList();
+        }
+
         public bool Create(Patient p)
         {
             db.Patients.Add(p);

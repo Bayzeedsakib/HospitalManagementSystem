@@ -27,7 +27,7 @@ namespace BLL.DTOs
         public string Gender { get; set; }
 
         [Required]
-        public DateTime? DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
 
         [Required]
         public string BloodGroup { get; set; }

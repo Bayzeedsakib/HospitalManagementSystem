@@ -1,7 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using DAL.EF;
+using DAL.Repositories;
+using BLL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Add Services to the container
+builder.Services.AddScoped<PatientRepo>();
+builder.Services.AddScoped<PatientService>();
 
 
 // Add MVC

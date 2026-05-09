@@ -19,6 +19,20 @@ namespace Hospital.Web.Controllers
             return View(new PatientDTO());
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var data = service.GetAll();
+            return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var data = service.GetAll();
+            return View(data);
+        }
+
         [HttpPost]
         public IActionResult Create(PatientDTO p)
         {
@@ -28,7 +42,8 @@ namespace Hospital.Web.Controllers
 
                 if(res == true)
                 {
-                    return RedirectToAction("Get");
+                    TempData["Msg"] = "Patient Added Successfully";
+                    return RedirectToAction("Index");
                 }
             }
 
