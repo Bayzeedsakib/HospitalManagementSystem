@@ -22,9 +22,27 @@ namespace DAL.Repositories
             return db.Patients.ToList();
         }
 
+        public Patient GetById(int id)
+        {
+            return db.Patients.Find(id);
+        }
         public bool Create(Patient p)
         {
             db.Patients.Add(p);
+            return db.SaveChanges() > 0;
+        }
+
+        public bool Edit(Patient p)
+        {
+            var exobj = GetById(p.Id);
+            db.Entry(exobj).CurrentValues.SetValues(p);
+            return db.SaveChanges() > 0;
+        }
+
+        public bool Delete(int id)
+        {
+            var exobj = GetById(id);
+            db.Patients.Remove(exobj);
             return db.SaveChanges() > 0;
         }
     }

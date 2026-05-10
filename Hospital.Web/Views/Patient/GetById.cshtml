@@ -1,0 +1,25 @@
+﻿@model BLL.DTOs.PatientDTO
+
+<h2>Individual Details</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Blood Group</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Name</td>
+        <td>@Model.Phone</td>
+        <td>@Model.Email</td>
+        <td>@Model.Gender</td>
+        <td>@Model.BloodGroup</td>
+        <td><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></td>
+    </tr>
+</table>

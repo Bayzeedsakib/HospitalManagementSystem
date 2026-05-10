@@ -31,12 +31,32 @@ namespace BLL.Services
            
         }
 
+        public PatientDTO GetById(int id)
+        {
+            var data = repo.GetById(id);
+
+            var res = mapper.Map<PatientDTO>(data);
+
+            return res;
+        }
+
         public bool Create(PatientDTO p)
         {
             var data = mapper.Map<Patient>(p);
 
             return repo.Create(data);
         }
+
+        public bool Edit(PatientDTO p)
+        {
+            var data = mapper.Map<Patient>(p);
+
+            return repo.Edit(data);
+        }
         
+        public bool Delete(int id)
+        {
+            return repo.Delete(id);
+        }
     }
 }

@@ -1,0 +1,49 @@
+﻿@model BLL.DTOs.PatientDTO
+
+<h2>Edit Patient</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <p>
+        Name<br />
+        <input asp-for="Name" />
+    </p>
+
+    <p>
+        Phone<br />
+        <input asp-for="Phone" />
+    </p>
+
+    <p>
+        Email<br />
+        <input asp-for="Email" />
+    </p>
+
+    <p>
+        Gender<br />
+        <select asp-for="Gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+    </p>
+
+    <p>
+        Date Of Birth<br />
+        <input asp-for="DateOfBirth" type="date" />
+    </p>
+
+    <p>
+        Blood Group<br />
+        <input asp-for="BloodGroup" />
+    </p>
+
+    <p>
+        Address<br />
+        <textarea asp-for="Address"></textarea>
+    </p>
+
+    <button type="submit">Update</button>
+
+</form>
