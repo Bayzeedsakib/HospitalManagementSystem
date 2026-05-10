@@ -10,6 +10,8 @@ builder.Services.AddScoped<PatientRepo>();
 builder.Services.AddScoped<PatientService>();
 builder.Services.AddScoped<DepartmentRepo>();
 builder.Services.AddScoped<DepartmentService>();
+builder.Services.AddScoped<DoctorRepo>();
+builder.Services.AddScoped<DoctorService>();
 
 
 

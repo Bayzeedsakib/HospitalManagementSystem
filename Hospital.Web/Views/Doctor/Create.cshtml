@@ -1,0 +1,62 @@
+﻿@model BLL.DTOs.DoctorDTO
+<form method="post">
+
+    <p>
+        Name <br />
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </p>
+
+    <p>
+        Phone <br />
+        <input asp-for="Phone" />
+        <span asp-validation-for="Phone"></span>
+    </p>
+
+    <p>
+        Email <br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </p>
+
+    <p>
+        Gender <br />
+        <select asp-for="Gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+    </p>
+
+    <p>
+        Specialization <br />
+        <input asp-for="Specialization" />
+    </p>
+
+    <p>
+        Qualification <br />
+        <input asp-for="Qualification" />
+    </p>
+
+    <p>
+        Department <br />
+
+        <select asp-for="DepartmentId" asp-items="ViewBag.Departments">
+            <option value="">Select Department</option>
+        </select>
+    </p>
+
+    <p>
+        Available From <br />
+        <input asp-for="AvailableFrom" type="time" />
+    </p>
+
+    <p>
+        Available To <br />
+        <input asp-for="AvailableTo" type="time" />
+    </p>
+
+    <p>
+        Max Patients Per Day <br />
+        <input asp-for="MaxPatientsPerDay" />
+    </p>
+    </form>

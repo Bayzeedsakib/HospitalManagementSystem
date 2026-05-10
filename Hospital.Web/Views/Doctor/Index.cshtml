@@ -1,0 +1,51 @@
+﻿@model List<BLL.DTOs.DoctorDTO>
+
+<h2>Doctor List</h2>
+
+@if (TempData["msg"] != null)
+{
+    <p>@TempData["msg"]</p>
+}
+
+<form method="get">
+    <input type="text" name="search" placeholder="Search Doctor or Specialization" />
+    <button type="submit">Search</button>
+</form>
+
+<p>
+    <a asp-action="Create">Add Doctor</a>
+</p>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Phone</th>
+        <th>Specialization</th>
+        <th>Availability</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.Id</td>
+            <td>@d.Name</td>
+            <td>@d.DepartmentName</td>
+            <td>@d.Phone</td>
+            <td>@d.Specialization</td>
+            <td>@d.AvailableFrom - @d.AvailableTo</td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@d.Id">Details</a> |
+
+                <a asp-action="Edit" asp-route-id="@d.Id">Edit</a> |
+
+                <a asp-action="Delete" asp-route-id="@d.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

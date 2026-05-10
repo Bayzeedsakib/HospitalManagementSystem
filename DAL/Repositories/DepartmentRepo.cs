@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DAL.Repositories
 {
@@ -14,6 +15,10 @@ namespace DAL.Repositories
         public DepartmentRepo(HospitalDbContext db)
         {
             this.db = db;
+        }
+        public List<Department> Search(string text)
+        {
+            return db.Departments.Where(x => x.Name.Contains(text)).ToList();
         }
 
         public List<Department> GetAll()

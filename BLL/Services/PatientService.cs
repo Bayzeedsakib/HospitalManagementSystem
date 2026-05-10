@@ -22,6 +22,14 @@ namespace BLL.Services
             mapper = MapperConfig.GetMapper();
         }
 
+        public List<PatientDTO> Search(string text)
+        {
+            var data = repo.Search(text);
+
+            var res = mapper.Map<List<PatientDTO>>(data);
+            return res;
+        }
+
         public List<PatientDTO> GetAll()
         {
             var data = repo.GetAll();

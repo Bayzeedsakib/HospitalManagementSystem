@@ -21,6 +21,15 @@ namespace BLL.Services
             mapper = MapperConfig.GetMapper();
         }
 
+        public List<DepartmentDTO> Search(string text)
+        {
+            var data = repo.Search(text);
+
+            var res = mapper.Map<List<DepartmentDTO>>(data);
+            return res;
+        }
+
+
         public List<DepartmentDTO> GetAll()
         {
             var data = repo.GetAll();

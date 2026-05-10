@@ -13,9 +13,14 @@ namespace Hospital.Web.Controllers
             this.service = service;
         }
 
-        [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
+            if (!string.IsNullOrEmpty(search))
+            {
+                var searched = service.Search(search);
+                return View(searched);
+            }
+
             var data = service.GetAll();
             return View(data);
         }

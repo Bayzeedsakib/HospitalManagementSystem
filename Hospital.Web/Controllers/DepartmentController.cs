@@ -6,15 +6,21 @@ namespace Hospital.Web.Controllers
 {
     public class DepartmentController : Controller
     {
-        DepartmentService service;
-        public DepartmentController(DepartmentService service)
+        DoctorService service;
+        public DepartmentController(DoctorService service)
         {
             this.service = service;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
+            if (!string.IsNullOrEmpty(search))
+            {
+                var searched = service.Search(search);
+                return View(searched);
+            }
+
             var data = service.GetAll();
             return View(data);
         }
