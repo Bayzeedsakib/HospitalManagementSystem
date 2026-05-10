@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 //Add Services to the container
 builder.Services.AddScoped<PatientRepo>();
 builder.Services.AddScoped<PatientService>();
+builder.Services.AddScoped<DepartmentRepo>();
+builder.Services.AddScoped<DepartmentService>();
+
 
 
 // Add MVC

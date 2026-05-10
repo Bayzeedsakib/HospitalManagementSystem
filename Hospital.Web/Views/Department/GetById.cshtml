@@ -1,0 +1,17 @@
+﻿@model BLL.DTOs.PatientDTO
+
+<h2>Individual Details</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Department Name</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Name</td>
+        <td><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></td>
+    </tr>
+</table>

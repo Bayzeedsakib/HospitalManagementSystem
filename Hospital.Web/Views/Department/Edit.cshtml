@@ -1,0 +1,19 @@
+﻿@model BLL.DTOs.DepartmentDTO
+
+<h2>Edit Department</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <p>
+        Department Name <br />
+
+        <input asp-for="Name" />
+
+        <span asp-validation-for="Name"></span>
+    </p>
+
+    <button type="submit">Update</button>
+
+</form>

@@ -1,0 +1,36 @@
+﻿@model List<BLL.DTOs.DepartmentDTO>
+
+<h2>Department List</h2>
+
+@if (TempData["msg"] != null)
+{
+    <p>@TempData["msg"]</p>
+}
+
+<p>
+    <a asp-action="Create">Add Department</a>
+</p>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Department Name</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.Id</td>
+            <td>@d.Name</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@d.Id">Edit</a> |
+
+                <a asp-action="Delete" asp-route-id="@d.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
