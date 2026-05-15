@@ -6,8 +6,8 @@ namespace Hospital.Web.Controllers
 {
     public class DepartmentController : Controller
     {
-        DoctorService service;
-        public DepartmentController(DoctorService service)
+        DepartmentService service;
+        public DepartmentController(DepartmentService service)
         {
             this.service = service;
         }
@@ -26,7 +26,7 @@ namespace Hospital.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult Get()
         {
             var data = service.GetAll();
             return View(data);

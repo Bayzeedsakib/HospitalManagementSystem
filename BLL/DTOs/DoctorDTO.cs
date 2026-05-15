@@ -24,8 +24,6 @@ namespace BLL.DTOs
         public string? Gender { get; set; }
         public string? Specialization { get; set; }
         public string? Qualification { get; set; }
-
-        [Required]
         public int DepartmentId { get; set; }
         public string? DepartmentName { get; set; }
         public TimeOnly? AvailableFrom { get; set; }

@@ -21,8 +21,9 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Department</th>
+        <th>Email</th>
         <th>Phone</th>
+        <th>Department</th>
         <th>Specialization</th>
         <th>Availability</th>
         <th>Action</th>
@@ -33,11 +34,12 @@
         <tr>
             <td>@d.Id</td>
             <td>@d.Name</td>
-            <td>@d.DepartmentName</td>
+            <td>@d.Email</td>
             <td>@d.Phone</td>
+            <td>@d.DepartmentName</td>
             <td>@d.Specialization</td>
             <td>@d.AvailableFrom - @d.AvailableTo</td>
-
+            
             <td>
                 <a asp-action="Details" asp-route-id="@d.Id">Details</a> |
 

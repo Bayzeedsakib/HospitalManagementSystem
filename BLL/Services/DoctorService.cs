@@ -26,9 +26,9 @@ namespace BLL.Services
             var res = mapper.Map <List<DoctorDTO>> (data);
             return res;
         }
-        public List<DoctorDTO> GetAll()
+        public List<DoctorDTO> Get()
         {
-            var data = repo.GetAll();
+            var data = repo.Get();
 
             var res = mapper.Map<List<DoctorDTO>>(data);
             return res;
@@ -38,6 +38,24 @@ namespace BLL.Services
         {
             var data = mapper.Map<Doctor>(d);
             return repo.Create(data);
+        }
+
+        public DoctorDTO GetById(int id)
+        {
+            var data = repo.GetById(id);
+            var res = mapper.Map<DoctorDTO>(data);
+            return res;
+        }
+
+        public bool Edit(DoctorDTO d)
+        {
+            var data = mapper.Map<Doctor>(d);
+            return repo.Edit(data);
+        }
+
+        public bool Delete(int id)
+        {
+            return repo.Delete(id);
         }
     }
 }
