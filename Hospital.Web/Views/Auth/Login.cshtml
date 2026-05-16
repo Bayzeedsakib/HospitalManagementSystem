@@ -1,0 +1,38 @@
+﻿@model BLL.DTOs.UserDTO
+
+<h2>Login</h2>
+
+@if (TempData["Msg"] != null)
+{
+
+    <span class="alert alert-@TempData["Class"]">@TempData["Msg"]</span>
+}
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:red;">
+        @ViewBag.Message
+    </p>
+}
+
+<form method="post">
+
+    <label>Email</label>
+    <input asp-for="Email" />
+
+    <br />
+    <br />
+
+    <label>Password</label>
+    <input asp-for="Password" type="password" />
+
+    <br />
+    <br />
+
+    <button type="submit">Login</button>
+
+</form>
+
+<br />
+
+<a asp-action="Register">Create New Account</a>

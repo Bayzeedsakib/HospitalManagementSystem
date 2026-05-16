@@ -54,6 +54,10 @@ public partial class HospitalDbContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValue("Pending");
 
+            entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.Appointments)
+                .HasForeignKey(d => d.CreatedBy)
+                .HasConstraintName("FK_Appointments_Users");
+
             entity.HasOne(d => d.Doctor).WithMany(p => p.Appointments)
                 .HasForeignKey(d => d.DoctorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

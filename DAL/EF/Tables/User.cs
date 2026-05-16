@@ -15,5 +15,7 @@ public partial class User
 
     public int RoleId { get; set; }
 
+    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+
     public virtual Role Role { get; set; } = null!;
 }

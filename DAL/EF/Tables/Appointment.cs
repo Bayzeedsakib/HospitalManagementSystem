@@ -23,6 +23,10 @@ public partial class Appointment
 
     public DateTime? CreatedAt { get; set; }
 
+    public int? CreatedBy { get; set; }
+
+    public virtual User? CreatedByNavigation { get; set; }
+
     public virtual Doctor Doctor { get; set; } = null!;
 
     public virtual Patient Patient { get; set; } = null!;

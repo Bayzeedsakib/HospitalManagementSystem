@@ -29,6 +29,7 @@ namespace Hospital.Web.Controllers
         [HttpGet]
         public IActionResult GetById(int id)
         {
+            ViewBag.Departments = new SelectList(Service.GetAll(), "Id", "Name");
             var data = service.GetById(id);
             return View(data);
         }

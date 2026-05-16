@@ -1,65 +1,109 @@
 ﻿@model BLL.DTOs.DoctorDTO
 
-<h2>Doctor Details</h2>
+@{
+    ViewData["Title"] = "Doctor Details";
+}
 
-<table border="1" cellpadding="10" cellspacing="0">
+<div style="width:700px; margin:auto; margin-top:40px; font-family:Arial;">
 
-    <tr>
-        <th>ID</th>
-        <td>@Model.Id</td>
-    </tr>
+    <div style="background-color:#0d6efd; color:white; padding:20px; border-radius:10px 10px 0 0;">
+        <h2 style="margin:0;">Doctor Details</h2>
+    </div>
 
-    <tr>
-        <th>Name</th>
-        <td>@Model.Name</td>
-    </tr>
+    <div style="border:1px solid #ddd; padding:25px; border-radius:0 0 10px 10px; box-shadow:0px 0px 10px #ddd;">
 
-    <tr>
-        <th>Email</th>
-        <td>@Model.Email</td>
-    </tr>
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Doctor ID</div>
+            <div>@Model.Id</div>
+        </div>
 
-    <tr>
-        <th>Phone</th>
-        <td>@Model.Phone</td>
-    </tr>
+        <hr />
 
-    <tr>
-        <th>Gender</th>
-        <td>@Model.Gender</td>
-    </tr>
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Doctor Name</div>
+            <div>@Model.Name</div>
+        </div>
 
-    <tr>
-        <th>Department</th>
-        <td>@Model.DepartmentName</td>
-    </tr>
+        <hr />
 
-    <tr>
-        <th>Specialization</th>
-        <td>@Model.Specialization</td>
-    </tr>
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Email Address</div>
+            <div>@Model.Email</div>
+        </div>
 
-    <tr>
-        <th>Qualification</th>
-        <td>@Model.Qualification</td>
-    </tr>
+        <hr />
 
-    <tr>
-        <th>Available Time</th>
-        <td>
-            @Model.AvailableFrom - @Model.AvailableTo
-        </td>
-    </tr>
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Phone Number</div>
+            <div>@Model.Phone</div>
+        </div>
 
-    <tr>
-        <th>Max Patients Per Day</th>
-        <td>@Model.MaxPatientsPerDay</td>
-    </tr>
+        <hr />
 
-</table>
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Gender</div>
+            <div>@Model.Gender</div>
+        </div>
 
-<br />
+        <hr />
 
-<p>
-    <a asp-action="Index">Back to List</a>
-</p>
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Department</div>
+            <div>@Model.DepartmentName</div>
+        </div>
+
+        <hr />
+
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Specialization</div>
+            <div>@Model.Specialization</div>
+        </div>
+
+        <hr />
+
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Qualification</div>
+            <div>@Model.Qualification</div>
+        </div>
+
+        <hr />
+
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Available Time</div>
+            <div>@Model.AvailableFrom - @Model.AvailableTo</div>
+        </div>
+
+        <hr />
+
+        <div style="display:flex; margin-bottom:15px;">
+            <div style="width:220px; font-weight:bold;">Max Patients Per Day</div>
+            <div>@Model.MaxPatientsPerDay</div>
+        </div>
+
+        <div style="margin-top:30px;">
+
+            <a asp-action="Index"
+               style="background-color:#6c757d;
+                      color:white;
+                      padding:10px 20px;
+                      text-decoration:none;
+                      border-radius:5px;">
+                Back
+            </a>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               style="background-color:#198754;
+                      color:white;
+                      padding:10px 20px;
+                      text-decoration:none;
+                      border-radius:5px;
+                      margin-left:10px;">
+                Edit
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

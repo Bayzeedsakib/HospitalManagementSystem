@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+
+
+
+<h2>Admin Dashboard</h2>
+
+<hr />
+
+<h3>Welcome, Admin</h3>
+
+<p>This is the control panel of the Smart Hospital System.</p>
+
+<hr />
+
+<h3>System Overview</h3>
+
+<ul>
+    <li>Total Patients: @ViewBag.TotalPatients</li>
+    <li>Total Doctors: @ViewBag.TotalDoctors</li>
+    <li>Total Departments: @ViewBag.TotalDepartments</li>
+    <li>Total Appointments: @ViewBag.TotalAppointments</li>
+</ul>
+
+<hr />
+
+<h3>Quick Actions</h3>
+
+<ul>
+    <li><a asp-controller="Patient" asp-action="Index">Manage Patients</a></li>
+    <li><a asp-controller="Doctor" asp-action="Index">Manage Doctors</a></li>
+    <li><a asp-controller="Department" asp-action="Index">Manage Departments</a></li>
+    <li><a asp-controller="Appointment" asp-action="Index">Manage Appointments</a></li>
+    <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+</ul>

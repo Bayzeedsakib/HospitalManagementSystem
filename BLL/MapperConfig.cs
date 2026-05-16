@@ -21,8 +21,9 @@ namespace BLL
 
             cfg.CreateMap<DoctorDTO, Doctor>()
     .ForMember(dest => dest.Department, opt => opt.Ignore());
-        });
 
+            cfg.CreateMap<User, UserDTO>().ReverseMap();
+        });
         public static Mapper GetMapper()
         {
             return new Mapper(config);

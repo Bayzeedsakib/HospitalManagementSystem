@@ -12,6 +12,8 @@ builder.Services.AddScoped<DepartmentRepo>();
 builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddScoped<DoctorRepo>();
 builder.Services.AddScoped<DoctorService>();
+builder.Services.AddScoped<UserRepo>();
+builder.Services.AddScoped<UserService>();
 
 
 
