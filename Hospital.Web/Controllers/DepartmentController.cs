@@ -92,6 +92,7 @@ namespace Hospital.Web.Controllers
             return View(data);
         }
 
+        [HttpPost]
         public IActionResult Delete(int id, string Decision)
         {
             if (Decision.Equals("Yes"))

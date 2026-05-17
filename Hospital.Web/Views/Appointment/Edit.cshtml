@@ -1,0 +1,75 @@
+﻿@model BLL.DTOs.AppointmentDTO
+
+<h2>Edit Appointment</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <p>
+        Patient <br />
+
+        <select asp-for="PatientId"
+                asp-items="ViewBag.Patients">
+
+            <option value="">Select Patient</option>
+
+        </select>
+    </p>
+
+
+    <p>
+        Doctor <br />
+
+        <select asp-for="DoctorId"
+                asp-items="ViewBag.Doctors">
+
+            <option value="">Select Doctor</option>
+
+        </select>
+    </p>
+
+
+    <p>
+        Appointment Date <br />
+
+        <input asp-for="AppointmentDate"
+               type="date" />
+    </p>
+
+
+    <p>
+        Appointment Time <br />
+
+        <input asp-for="AppointmentTime"
+               type="time" />
+    </p>
+
+
+    <p>
+        Status <br />
+
+        <select asp-for="Status">
+
+            @foreach (var s in ViewBag.StatusList)
+            {
+                <option value="@s">@s</option>
+            }
+
+        </select>
+    </p>
+
+
+    <p>
+        Problem Description <br />
+
+        <textarea asp-for="ProblemDescription"
+                  rows="4"
+                  cols="40"></textarea>
+    </p>
+
+    <button type="submit">
+        Update Appointment
+    </button>
+
+</form>
