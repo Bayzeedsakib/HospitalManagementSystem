@@ -16,13 +16,22 @@ namespace BLL
             cfg.CreateMap<Patient, PatientDTO>().ReverseMap();
             cfg.CreateMap<Department, DepartmentDTO>().ReverseMap();
             cfg.CreateMap<Doctor, DoctorDTO>()
-    .ForMember(dest => dest.DepartmentName,
-        opt => opt.MapFrom(src => src.Department.Name));
+            .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name));
+
 
             cfg.CreateMap<DoctorDTO, Doctor>()
-    .ForMember(dest => dest.Department, opt => opt.Ignore());
+            .ForMember(dest => dest.Department, opt => opt.Ignore());
 
             cfg.CreateMap<User, UserDTO>().ReverseMap();
+
+            cfg.CreateMap<Appointment, AppointmentDTO>()
+            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.Name))
+
+
+            .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.Name))
+
+
+            .ReverseMap();
         });
         public static Mapper GetMapper()
         {
