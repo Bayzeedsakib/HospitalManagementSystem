@@ -88,11 +88,6 @@ namespace Hospital.Web.Controllers
         [HttpPost]
         public IActionResult Create(AppointmentDTO a)
         {
-            //if (!IsLoggedIn())
-            //{
-            //    return RedirectToAction("Login", "Auth");
-            //}
-
             if (ModelState.IsValid)
             {
                 a.CreatedBy = HttpContext.Session.GetInt32("userid");

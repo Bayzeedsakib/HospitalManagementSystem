@@ -16,6 +16,8 @@ builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AppointmentRepo>();
 builder.Services.AddScoped<AppointmentService>();
+builder.Services.AddScoped<PrescriptionRepo>();
+builder.Services.AddScoped<PrescriptionService>();
 
 
 

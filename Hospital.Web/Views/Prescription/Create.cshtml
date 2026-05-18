@@ -1,0 +1,52 @@
+﻿@model BLL.DTOs.PrescriptionDTO
+
+<h2>Create Prescription</h2>
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:red;">
+        @ViewBag.Message
+    </p>
+}
+
+<form method="post">
+
+    <label>Appointment</label>
+    <select asp-for="AppointmentId" asp-items="ViewBag.Appointments">
+        <option value="">Select Appointment</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label>Symptoms</label>
+    <textarea asp-for="Symptoms"></textarea>
+
+    <br />
+    <br />
+
+    <label>Diagnosis</label>
+    <textarea asp-for="Diagnosis"></textarea>
+
+    <br />
+    <br />
+
+    <label>Advice</label>
+    <textarea asp-for="Advice"></textarea>
+
+    <br />
+    <br />
+
+    <label>Next Visit Date</label>
+    <input asp-for="NextVisitDate" type="date" />
+
+    <br />
+    <br />
+
+    <button type="submit">Save Prescription</button>
+
+</form>
+
+<br />
+
+<a asp-action="Index">Back to List</a>
