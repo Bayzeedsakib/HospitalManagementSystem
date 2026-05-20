@@ -35,5 +35,7 @@ namespace BLL.DTOs
         [Required]
         public string Address { get; set; }
 
+        //public List<PrescriptionDTO> Prescriptions { get; set; }
+
     }
 }

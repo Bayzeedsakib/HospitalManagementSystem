@@ -1,49 +1,73 @@
 ﻿@model BLL.DTOs.PatientDTO
 
-<h2>Add Patient</h2>
+@{
+    ViewData["Title"] = "Add Patient";
+}
 
-<form method="post">
+<div class="container mt-4">
 
-    <p>
-        Name<br />
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-    </p>
+    <div class="card shadow-sm">
+        <div class="card-body">
 
-    <p>
-        Phone<br />
-        <input asp-for="Phone" />
-        <span asp-validation-for="Phone"></span>
-    </p>
+            <h2 class="mb-4">Add Patient</h2>
 
-    <p>
-        Email<br />
-        <input asp-for="Email" />
-    </p>
+            <form method="post">
 
-    <p>
-        Gender<br />
-        <select asp-for="Gender">
-            <option>Male</option>
-            <option>Female</option>
-        </select>
-    </p>
+                <div class="row">
 
-    <p>
-        Date Of Birth<br />
-        <input asp-for="DateOfBirth" type="date" />
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
 
-    <p>
-        Blood Group<br />
-        <input asp-for="BloodGroup" />
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
 
-    <p>
-        Address<br />
-        <textarea asp-for="Address"></textarea>
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
 
-    <button type="submit">Save</button>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
 
-</form>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DateOfBirth" class="form-label"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="BloodGroup" class="form-label"></label>
+                        <input asp-for="BloodGroup" class="form-control" />
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label asp-for="Address" class="form-label"></label>
+                        <textarea asp-for="Address" class="form-control" rows="3"></textarea>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Save Patient
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

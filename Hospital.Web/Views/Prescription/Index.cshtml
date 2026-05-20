@@ -1,45 +1,85 @@
 ﻿@model List<BLL.DTOs.PrescriptionDTO>
 
-<h2>Prescription List</h2>
+@{
+    ViewData["Title"] = "Prescription List";
+}
 
-<a asp-action="Create">Create New Prescription</a>
+<div class="container mt-4">
 
-<br />
-<br />
+    <h2 class="mb-3">Prescription List</h2>
 
-<form method="get">
-    <input type="text" name="search" placeholder="Search patient or doctor" />
-    <button type="submit">Search</button>
-</form>
+    <div class="d-flex justify-content-between align-items-center mb-3">
 
-<br />
+        <a asp-action="Create" class="btn btn-primary">
+            + Create New Prescription
+        </a>
 
-<table border="1">
-    <tr>
-        <th>Patient</th>
-        <th>Doctor</th>
-        <th>Symptoms</th>
-        <th>Diagnosis</th>
-        <th>Advice</th>
-        <th>Next Visit</th>
-        <th>Created At</th>
-        <th>Action</th>
-    </tr>
+        <form method="get" class="d-flex gap-2">
+            <input type="text"
+                   name="search"
+                   class="form-control"
+                   placeholder="Search patient or doctor"
+                   style="max-width:250px;" />
 
-    @foreach (var p in Model)
-    {
-        <tr>
-            <td>@p.PatientName</td>
-            <td>@p.DoctorName</td>
-            <td>@p.Symptoms</td>
-            <td>@p.Diagnosis</td>
-            <td>@p.Advice</td>
-            <td>@p.NextVisitDate</td>
-            <td>@p.CreatedAt</td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@p.Id">Edit</a>
-                <a asp-action="Delete" asp-route-id="@p.Id">Delete</a>
-            </td>
-        </tr>
-    }
-</table>
+            <button type="submit" class="btn btn-outline-primary">
+                Search
+            </button>
+        </form>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body p-0">
+
+            <table class="table table-hover table-bordered mb-0">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Symptoms</th>
+                        <th>Diagnosis</th>
+                        <th>Advice</th>
+                        <th>Next Visit</th>
+                        <th>Created At</th>
+                        <th style="width:160px;">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>@p.PatientName</td>
+                            <td>@p.DoctorName</td>
+                            <td>@p.Symptoms</td>
+                            <td>@p.Diagnosis</td>
+                            <td>@p.Advice</td>
+                            <td>@p.NextVisitDate</td>
+                            <td>@p.CreatedAt</td>
+
+                            <td>
+                                <a asp-action="Edit"
+                                   asp-route-id="@p.Id"
+                                   class="btn btn-sm btn-primary">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@p.Id"
+                                   class="btn btn-sm btn-danger">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

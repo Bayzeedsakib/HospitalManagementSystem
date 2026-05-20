@@ -112,6 +112,10 @@ public partial class HospitalDbContext : DbContext
                 .HasForeignKey(d => d.DepartmentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Doctors__Departm__30F848ED");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Doctors)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_Doctors_Users");
         });
 
         modelBuilder.Entity<Medicine>(entity =>

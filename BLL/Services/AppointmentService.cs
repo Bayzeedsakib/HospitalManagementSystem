@@ -27,10 +27,17 @@ namespace BLL.Services
             return res;
         }
 
-        public AppointmentDTO GetById(int id)
+        public List<AppointmentDTO> GetByDoctorId(int id)
+        {
+            var data = repo.GetAll().Where(x => x.DoctorId == id);
+            var res = mapper.Map<List<AppointmentDTO>>(data);
+            return res;
+        }
+
+        public List<AppointmentDTO> GetById(int id)
         {
             var data = repo.GetById(id);
-            var res = mapper.Map<AppointmentDTO>(data);
+            var res = mapper.Map<List<AppointmentDTO>>(data);
             return res;
         }
 

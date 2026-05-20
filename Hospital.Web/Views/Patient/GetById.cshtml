@@ -1,25 +1,70 @@
 ﻿@model BLL.DTOs.PatientDTO
 
-<h2>Individual Details</h2>
+<h2>Patient Details</h2>
 
+<!-- Patient Info -->
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Gender</th>
-        <th>Blood Group</th>
-        <th>Action</th>
-    </tr>
-
-    <tr>
         <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Name</th>
         <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Phone</th>
         <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <th>Email</th>
         <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
         <td>@Model.Gender</td>
+    </tr>
+    <tr>
+        <th>Blood Group</th>
         <td>@Model.BloodGroup</td>
-        <td><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></td>
     </tr>
 </table>
+
+<br />
+
+<!-- Prescription History -->
+<h3>Prescription History</h3>
+
+@* @if (Model.Prescriptions != null && Model.Prescriptions.Any()) *@
+@* { *@
+@*     <table class="table table-striped table-bordered"> *@
+
+@*         <tr> *@
+@*             <th>Diagnosis</th> *@
+@*             <th>Symptoms</th> *@
+@*             <th>Advice</th> *@
+@*             <th>Next Visit</th> *@
+@*             <th>Created At</th> *@
+@*         </tr> *@
+
+@*         @foreach (var p in Model.Prescriptions) *@
+@*         { *@
+@*             <tr> *@
+@*                 <td>@p.Diagnosis</td> *@
+@*                 <td>@p.Symptoms</td> *@
+@*                 <td>@p.Advice</td> *@
+@*                 <td>@p.NextVisitDate</td> *@
+@*                 <td>@p.CreatedAt</td> *@
+@*             </tr> *@
+@*         } *@
+
+@*     </table> *@
+@* } *@
+@* else *@
+@* { *@
+@*     <p>No prescriptions found for this patient.</p> *@
+@* } *@
+
+<br />
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit Patient</a>

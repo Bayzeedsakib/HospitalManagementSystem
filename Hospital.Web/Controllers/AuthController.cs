@@ -41,7 +41,7 @@ namespace Hospital.Web.Controllers
 
                 if (user.RoleId == 2)
                 {
-                    return RedirectToAction("Index", "Doctor");
+                    return RedirectToAction("DoctorDashboard", "Doctor");
                 }
                      
 

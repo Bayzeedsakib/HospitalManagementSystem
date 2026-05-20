@@ -29,5 +29,6 @@ namespace BLL.DTOs
         public TimeOnly? AvailableFrom { get; set; }
         public TimeOnly? AvailableTo { get; set; }
         public int? MaxPatientsPerDay { get; set; }
+        public int? UserId { get; set; }
     }
 }

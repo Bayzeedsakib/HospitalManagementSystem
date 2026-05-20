@@ -1,87 +1,178 @@
 ﻿@model BLL.DTOs.AppointmentDTO
 
-<h2>Create Appointment</h2>
-
-@if (TempData["msg"] != null)
-{
-    <p>@TempData["msg"]</p>
+@{
+    ViewData["Title"] = "Create Appointment";
 }
 
-<form method="post">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
 
-    <p>
-        Patient <br />
+            <div class="card shadow-lg border-0 rounded-4">
 
-        <select asp-for="PatientId"
-                asp-items="ViewBag.Patients">
+                <!-- Header -->
+                <div class="card-header bg-primary text-white rounded-top-4 py-4">
+                    <h2 class="mb-0 fw-bold">
+                        <i class="bi bi-calendar-check me-2"></i>
+                        Create Appointment
+                    </h2>
+                    <p class="mb-0 mt-1 opacity-75">
+                        Schedule a new patient appointment
+                    </p>
+                </div>
 
-            <option value="">Select Patient</option>
+                <!-- Body -->
+                <div class="card-body p-5">
 
-        </select>
+                    @if (TempData["msg"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            @TempData["msg"]
 
-        <span asp-validation-for="PatientId"></span>
-    </p>
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert">
+                            </button>
+                        </div>
+                    }
 
+                    <form method="post">
 
-    <p>
-        Doctor <br />
+                        <!-- Patient & Doctor -->
+                        <div class="row">
 
-        <select asp-for="DoctorId"
-                asp-items="ViewBag.Doctors">
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="PatientId"
+                                       class="form-label fw-semibold">
+                                    Patient
+                                </label>
 
-            <option value="">Select Doctor</option>
+                                <select asp-for="PatientId"
+                                        asp-items="ViewBag.Patients"
+                                        class="form-select form-select-lg rounded-3 shadow-sm">
 
-        </select>
+                                    <option value="">Select Patient</option>
 
-        <span asp-validation-for="DoctorId"></span>
-    </p>
+                                </select>
 
+                                <span asp-validation-for="PatientId"
+                                      class="text-danger small"></span>
+                            </div>
 
-    <p>
-        Appointment Date <br />
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="DoctorId"
+                                       class="form-label fw-semibold">
+                                    Doctor
+                                </label>
 
-        <input asp-for="AppointmentDate"
-               type="date" />
+                                <select asp-for="DoctorId"
+                                        asp-items="ViewBag.Doctors"
+                                        class="form-select form-select-lg rounded-3 shadow-sm">
 
-        <span asp-validation-for="AppointmentDate"></span>
-    </p>
+                                    <option value="">Select Doctor</option>
 
+                                </select>
 
-    <p>
-        Appointment Time <br />
+                                <span asp-validation-for="DoctorId"
+                                      class="text-danger small"></span>
+                            </div>
 
-        <input asp-for="AppointmentTime"
-               type="time" />
+                        </div>
 
-        <span asp-validation-for="AppointmentTime"></span>
-    </p>
+                        <!-- Date & Time -->
+                        <div class="row">
 
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="AppointmentDate"
+                                       class="form-label fw-semibold">
+                                    Appointment Date
+                                </label>
 
-    <p>
-        Status <br />
+                                <input asp-for="AppointmentDate"
+                                       type="date"
+                                       class="form-control form-control-lg rounded-3 shadow-sm" />
 
-        <select asp-for="Status">
+                                <span asp-validation-for="AppointmentDate"
+                                      class="text-danger small"></span>
+                            </div>
 
-            @foreach (var s in ViewBag.StatusList)
-            {
-                <option value="@s">@s</option>
-            }
+                            <div class="col-md-6 mb-4">
+                                <label asp-for="AppointmentTime"
+                                       class="form-label fw-semibold">
+                                    Appointment Time
+                                </label>
 
-        </select>
-    </p>
+                                <input asp-for="AppointmentTime"
+                                       type="time"
+                                       class="form-control form-control-lg rounded-3 shadow-sm" />
 
+                                <span asp-validation-for="AppointmentTime"
+                                      class="text-danger small"></span>
+                            </div>
 
-    <p>
-        Problem Description <br />
+                        </div>
 
-        <textarea asp-for="ProblemDescription"
-                  rows="4"
-                  cols="40"></textarea>
-    </p>
+                        <!-- Status -->
+                        <div class="mb-4">
+                            <label asp-for="Status"
+                                   class="form-label fw-semibold">
+                                Status
+                            </label>
 
+                            <select asp-for="Status"
+                                    class="form-select form-select-lg rounded-3 shadow-sm">
 
-    <button type="submit">
-        Save Appointment
-    </button>
+                                @foreach (var s in ViewBag.StatusList)
+                                {
+                                    <option value="@s">@s</option>
+                                }
 
-</form>
+                            </select>
+                        </div>
+
+                        <!-- Problem Description -->
+                        <div class="mb-4">
+                            <label asp-for="ProblemDescription"
+                                   class="form-label fw-semibold">
+                                Problem Description
+                            </label>
+
+                            <textarea asp-for="ProblemDescription"
+                                      rows="5"
+                                      class="form-control rounded-3 shadow-sm"
+                                      placeholder="Describe the patient's problem or symptoms...">
+                            </textarea>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between align-items-center mt-5">
+
+                            <a asp-action="Index"
+                               class="btn btn-outline-secondary btn-lg rounded-3 px-4">
+                                <i class="bi bi-arrow-left me-2"></i>
+                                Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg rounded-3 px-5 shadow">
+                                <i class="bi bi-save2-fill me-2"></i>
+                                Save Appointment
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

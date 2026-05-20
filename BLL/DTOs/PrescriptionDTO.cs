@@ -30,5 +30,6 @@ namespace BLL.DTOs
         public DateOnly? NextVisitDate { get; set; }
 
         public DateTime? CreatedAt { get; set; }
+
     }
 }

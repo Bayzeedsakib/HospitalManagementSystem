@@ -1,58 +1,69 @@
 ﻿@model BLL.DTOs.PrescriptionDTO
 
-<h2>Prescription Details</h2>
+@{
+    ViewData["Title"] = "Prescription Details";
+}
 
-<table border="1" cellpadding="10">
+<div class="container mt-4">
 
-    <tr>
-        <th>ID</th>
-        <td>@Model.Id</td>
-    </tr>
+    <div class="card shadow-sm">
 
-    <tr>
-        <th>Patient</th>
-        <td>@Model.PatientName</td>
-    </tr>
+        <div class="card-body">
 
-    <tr>
-        <th>Doctor</th>
-        <td>@Model.DoctorName</td>
-    </tr>
+            <h2 class="mb-4">Prescription Details</h2>
 
-    @* <tr> *@
-    @*     <th>Appointment Date</th> *@
-    @*     <td>@Model.AppointmentDate</td> *@
-    @* </tr> *@
+            <table class="table table-bordered">
 
-    <tr>
-        <th>Symptoms</th>
-        <td>@Model.Symptoms</td>
-    </tr>
+                <tr>
+                    <th>ID</th>
+                    <td>@Model.Id</td>
+                </tr>
 
-    <tr>
-        <th>Diagnosis</th>
-        <td>@Model.Diagnosis</td>
-    </tr>
+                <tr>
+                    <th>Patient</th>
+                    <td>@Model.PatientName</td>
+                </tr>
 
-    <tr>
-        <th>Advice</th>
-        <td>@Model.Advice</td>
-    </tr>
+                <tr>
+                    <th>Doctor</th>
+                    <td>@Model.DoctorName</td>
+                </tr>
 
-    <tr>
-        <th>Next Visit</th>
-        <td>@Model.NextVisitDate</td>
-    </tr>
+                <tr>
+                    <th>Symptoms</th>
+                    <td>@Model.Symptoms</td>
+                </tr>
 
-    <tr>
-        <th>Created At</th>
-        <td>@Model.CreatedAt</td>
-    </tr>
+                <tr>
+                    <th>Diagnosis</th>
+                    <td>@Model.Diagnosis</td>
+                </tr>
 
-</table>
+                <tr>
+                    <th>Advice</th>
+                    <td>@Model.Advice</td>
+                </tr>
 
-<br />
+                <tr>
+                    <th>Next Visit</th>
+                    <td>@Model.NextVisitDate</td>
+                </tr>
 
-<a asp-action="Index">
-    Back to List
-</a>
+                <tr>
+                    <th>Created At</th>
+                    <td>@Model.CreatedAt</td>
+                </tr>
+
+            </table>
+
+            <div class="mt-3">
+                <a asp-action="Index" class="btn btn-secondary">
+                    Back to List
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

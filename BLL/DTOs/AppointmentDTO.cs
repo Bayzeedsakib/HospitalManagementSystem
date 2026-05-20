@@ -50,5 +50,7 @@ namespace BLL.DTOs
 
 
         public DateTime? CreatedAt { get; set; }
+
+        public PrescriptionDTO Prescription { get; set; }
     }
 }

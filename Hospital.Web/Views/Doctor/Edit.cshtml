@@ -1,64 +1,93 @@
 ﻿@model BLL.DTOs.DoctorDTO
-<form method="post">
 
-    <p>
-        Name <br />
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-    </p>
+@{
+    ViewData["Title"] = "Doctor Form";
+}
 
-    <p>
-        Phone <br />
-        <input asp-for="Phone" />
-        <span asp-validation-for="Phone"></span>
-    </p>
+<div class="container mt-4">
 
-    <p>
-        Email <br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </p>
+    <div class="card shadow-sm">
+        <div class="card-body">
 
-    <p>
-        Gender <br />
-        <select asp-for="Gender">
-            <option>Male</option>
-            <option>Female</option>
-        </select>
-    </p>
+            <h2 class="mb-4">Doctor Form</h2>
 
-    <p>
-        Specialization <br />
-        <input asp-for="Specialization" />
-    </p>
+            <form method="post">
 
-    <p>
-        Qualification <br />
-        <input asp-for="Qualification" />
-    </p>
+                <div class="row">
 
-    <p>
-        Department <br />
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
 
-        <select asp-for="DepartmentId" asp-items="ViewBag.Departments">
-            <option value="">Select Department</option>
-        </select>
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
 
-    <p>
-        Available From <br />
-        <input asp-for="AvailableFrom" type="time" />
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
 
-    <p>
-        Available To <br />
-        <input asp-for="AvailableTo" type="time" />
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
 
-    <p>
-        Max Patients Per Day <br />
-        <input asp-for="MaxPatientsPerDay" />
-    </p>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Specialization" class="form-label"></label>
+                        <input asp-for="Specialization" class="form-control" />
+                    </div>
 
-    <button type="submit">Save</button>
-</form>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Qualification" class="form-label"></label>
+                        <input asp-for="Qualification" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Department</label>
+                        <select asp-for="DepartmentId"
+                                asp-items="ViewBag.Departments"
+                                class="form-select">
+                            <option value="">Select Department</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="AvailableFrom" class="form-label"></label>
+                        <input asp-for="AvailableFrom" type="time" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="AvailableTo" class="form-label"></label>
+                        <input asp-for="AvailableTo" type="time" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="MaxPatientsPerDay" class="form-label"></label>
+                        <input asp-for="MaxPatientsPerDay" class="form-control" />
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Save
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

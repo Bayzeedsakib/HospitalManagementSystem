@@ -9,14 +9,16 @@ namespace Hospital.Web.Controllers
     public class PrescriptionController : Controller
     {
         PrescriptionService service;
-        public PrescriptionController(PrescriptionService service)
+        AppointmentService appointmentservice;
+        public PrescriptionController(PrescriptionService service, AppointmentService appointmentservice)
         {
             this.service = service;
+            this.appointmentservice = appointmentservice;
         }
 
         private void LoadDropdowns()
         {
-            var appointments = service.GetAll();
+            var appointments = appointmentservice.GetAll();
 
             ViewBag.Appointments = new SelectList(
                 appointments,
@@ -32,10 +34,10 @@ namespace Hospital.Web.Controllers
 
         public IActionResult Index(string search)
         {
-            if (!IsLoggedIn())
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            //if (!IsLoggedIn())
+            //{
+            //    return RedirectToAction("Login", "Auth");
+            //}
 
             //if (!string.IsNullOrEmpty(search))
             //{

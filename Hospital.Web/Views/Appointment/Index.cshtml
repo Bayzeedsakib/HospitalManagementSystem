@@ -1,71 +1,137 @@
 ﻿@model List<BLL.DTOs.AppointmentDTO>
 
-<h2>Appointment List</h2>
+@{
+    ViewData["Title"] = "Appointment List";
+}
+
+<h2 class="mb-3">Appointment List</h2>
 
 @if (TempData["Msg"] != null)
 {
-    <p>@TempData["Msg"]</p>
+    <div style="
+        background-color:#d4edda;
+        color:#155724;
+        padding:10px;
+        border-radius:5px;
+        margin-bottom:15px;">
+        @TempData["Msg"]
+    </div>
 }
 
-<p>
-    <a asp-action="Create">Create Appointment</a>
-</p>
+<div style="margin-bottom:15px;">
 
-<form method="get">
+    <a asp-action="Create"
+       style="
+       background-color:#007bff;
+       color:white;
+       padding:8px 14px;
+       text-decoration:none;
+       border-radius:5px;">
+        + Create Appointment
+    </a>
+
+</div>
+
+<form method="get" style="margin-bottom:20px;">
 
     <input type="text"
            name="search"
-           placeholder="Search Patient / Doctor / Status" />
+           placeholder="Search Patient / Doctor / Status"
+           style="
+           padding:8px;
+           width:250px;
+           border:1px solid #ccc;
+           border-radius:5px;" />
 
-    <button type="submit">Search</button>
+    <button type="submit"
+            style="
+            padding:8px 14px;
+            background-color:#28a745;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;">
+        Search
+    </button>
 
 </form>
 
-<br />
+<table style="
+       width:100%;
+       border-collapse:collapse;
+       box-shadow:0 2px 8px rgba(0,0,0,0.1);">
 
-<table border="1" cellpadding="10">
+    <thead style="background-color:#343a40; color:white;">
 
-    <tr>
-        <th>ID</th>
-        <th>Patient</th>
-        <th>Doctor</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Serial</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-
-    @foreach (var a in Model)
-    {
         <tr>
-
-            <td>@a.Id</td>
-
-            <td>@a.PatientName</td>
-
-            <td>@a.DoctorName</td>
-
-            <td>@a.AppointmentDate</td>
-
-            <td>@a.AppointmentTime</td>
-
-            <td>@a.SerialNo</td>
-
-            <td>@a.Status</td>
-
-            <td>
-                <a asp-action="Details"
-                   asp-route-id="@a.Id">Details</a> |
-
-                <a asp-action="Edit"
-                   asp-route-id="@a.Id">Edit</a> |
-
-                <a asp-action="Delete"
-                   asp-route-id="@a.Id">Delete</a>
-            </td>
-
+            <th style="padding:12px;">ID</th>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Serial</th>
+            <th>Status</th>
+            <th>Action</th>
         </tr>
-    }
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var a in Model)
+        {
+            <tr style="border-bottom:1px solid #ddd;">
+
+                <td style="padding:10px;">@a.Id</td>
+
+                <td>@a.PatientName</td>
+
+                <td>@a.DoctorName</td>
+
+                <td>@a.AppointmentDate</td>
+
+                <td>@a.AppointmentTime</td>
+
+                <td>@a.SerialNo</td>
+
+                <td>
+                    <span style="
+                          padding:4px 10px;
+                          border-radius:12px;
+                          background-color:#f0f0f0;">
+                        @a.Status
+                    </span>
+                </td>
+
+                <td>
+
+                    <a asp-action="Details"
+                       asp-route-id="@a.Id"
+                       style="color:#007bff; text-decoration:none;">
+                        Details
+                    </a>
+
+                    |
+
+                    <a asp-action="Edit"
+                       asp-route-id="@a.Id"
+                       style="color:#28a745; text-decoration:none;">
+                        Edit
+                    </a>
+
+                    |
+
+                    <a asp-action="Delete"
+                       asp-route-id="@a.Id"
+                       style="color:#dc3545; text-decoration:none;">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
 
 </table>

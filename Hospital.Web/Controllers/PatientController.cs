@@ -8,9 +8,11 @@ namespace Hospital.Web.Controllers
     public class PatientController : Controller
     {
         PatientService service;
-        public PatientController(PatientService service)
+        AppointmentService appointmentservice;
+        public PatientController(PatientService service, AppointmentService appointmentservice)
         {
             this.service = service;
+            this.appointmentservice = appointmentservice;
         }
 
         public IActionResult Index(string search)
@@ -35,6 +37,19 @@ namespace Hospital.Web.Controllers
         public IActionResult GetById(int id)
         {
             var data = service.GetById(id);
+
+            if (data == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            // Load prescriptions for this patient
+            //data.Prescriptions = appointmentservice
+            //    .GetById(id)
+            //    .Where(a => a.Prescription != null)
+            //    .Select(a => a.Prescription)
+            //    .ToList();
+
             return View(data);
         }
 
@@ -105,6 +120,8 @@ namespace Hospital.Web.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
       
     }
 }

@@ -1,47 +1,66 @@
 ﻿@model BLL.DTOs.PrescriptionDTO
 
-<h2>Edit Prescription</h2>
+@{
+    ViewData["Title"] = "Edit Prescription";
+}
 
-<form method="post">
+<div class="container mt-4">
 
-    <input type="hidden" asp-for="Id" />
+    <div class="card shadow-sm">
 
-    <label>Appointment</label>
-    <select asp-for="AppointmentId" asp-items="ViewBag.Appointments">
-        <option value="">Select Appointment</option>
-    </select>
+        <div class="card-body">
 
-    <br />
-    <br />
+            <h2 class="mb-4">Edit Prescription</h2>
 
-    <label>Symptoms</label>
-    <textarea asp-for="Symptoms"></textarea>
+            <form method="post">
 
-    <br />
-    <br />
+                <input type="hidden" asp-for="Id" />
 
-    <label>Diagnosis</label>
-    <textarea asp-for="Diagnosis"></textarea>
+                <div class="mb-3">
+                    <label class="form-label">Appointment</label>
+                    <select asp-for="AppointmentId"
+                            asp-items="ViewBag.Appointments"
+                            class="form-select">
+                        <option value="">Select Appointment</option>
+                    </select>
+                </div>
 
-    <br />
-    <br />
+                <div class="mb-3">
+                    <label asp-for="Symptoms" class="form-label"></label>
+                    <textarea asp-for="Symptoms" class="form-control" rows="3"></textarea>
+                </div>
 
-    <label>Advice</label>
-    <textarea asp-for="Advice"></textarea>
+                <div class="mb-3">
+                    <label asp-for="Diagnosis" class="form-label"></label>
+                    <textarea asp-for="Diagnosis" class="form-control" rows="3"></textarea>
+                </div>
 
-    <br />
-    <br />
+                <div class="mb-3">
+                    <label asp-for="Advice" class="form-label"></label>
+                    <textarea asp-for="Advice" class="form-control" rows="3"></textarea>
+                </div>
 
-    <label>Next Visit Date</label>
-    <input asp-for="NextVisitDate" type="date" />
+                <div class="mb-3">
+                    <label asp-for="NextVisitDate" class="form-label"></label>
+                    <input asp-for="NextVisitDate" type="date" class="form-control" />
+                </div>
 
-    <br />
-    <br />
+                <button type="submit" class="btn btn-primary">
+                    Update Prescription
+                </button>
 
-    <button type="submit">Update Prescription</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">
+                    Back to List
+                </a>
 
-</form>
+            </form>
 
-<br />
+        </div>
 
-<a asp-action="Index">Back to List</a>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -21,5 +21,26 @@ namespace DAL.Repositories
             var data = db.Users.Where(x => x.Email.Equals(Email) && x.Password.Equals(Password)).FirstOrDefault();
             return data;
         }
+
+        public List<User> GetAll()
+        {
+            var data = db.Users.ToList();
+            return data;
+        }
+
+        public User GetByEmail(string email)
+        {
+            return db.Users
+                .FirstOrDefault(u => u.Email == email);
+        }
+
+        public User Create(User user)
+        {
+            db.Users.Add(user);
+
+            db.SaveChanges();
+
+            return user;
+        }
     }
 }

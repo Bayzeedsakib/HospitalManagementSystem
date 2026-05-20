@@ -1,58 +1,299 @@
 ﻿@model BLL.DTOs.AppointmentDTO
 
-<h2>Appointment Details</h2>
+@{
+    ViewData["Title"] = "Appointment Details";
+}
 
-<table border="1" cellpadding="10">
+<div class="container py-5">
 
-    <tr>
-        <th>ID</th>
-        <td>@Model.Id</td>
-    </tr>
+    <div class="row justify-content-center">
 
-    <tr>
-        <th>Patient</th>
-        <td>@Model.PatientName</td>
-    </tr>
+        <div class="col-lg-9">
 
-    <tr>
-        <th>Doctor</th>
-        <td>@Model.DoctorName</td>
-    </tr>
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
 
-    <tr>
-        <th>Date</th>
-        <td>@Model.AppointmentDate</td>
-    </tr>
+                <!-- Header -->
+                <div class="bg-primary bg-gradient text-white p-5">
 
-    <tr>
-        <th>Time</th>
-        <td>@Model.AppointmentTime</td>
-    </tr>
+                    <div class="d-flex align-items-center">
 
-    <tr>
-        <th>Serial No</th>
-        <td>@Model.SerialNo</td>
-    </tr>
+                        <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow"
+                             style="width:75px;height:75px;">
 
-    <tr>
-        <th>Status</th>
-        <td>@Model.Status</td>
-    </tr>
+                            <i class="bi bi-calendar2-check fs-1"></i>
 
-    <tr>
-        <th>Problem</th>
-        <td>@Model.ProblemDescription</td>
-    </tr>
+                        </div>
 
-    <tr>
-        <th>Created At</th>
-        <td>@Model.CreatedAt</td>
-    </tr>
+                        <div class="ms-4">
 
-</table>
+                            <h2 class="fw-bold mb-1">
+                                Appointment Details
+                            </h2>
 
-<br />
+                            <p class="mb-0 opacity-75">
+                                View complete appointment information
+                            </p>
 
-<a asp-action="Index">
-    Back to List
-</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-5 bg-light">
+
+                    <!-- Appointment Info -->
+                    <div class="card border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div class="row g-4">
+
+                                <!-- ID -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Appointment ID
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            #@Model.Id
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Serial -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Serial Number
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            @Model.SerialNo
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Patient -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Patient Name
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            <i class="bi bi-person-fill text-primary me-2"></i>
+                                            @Model.PatientName
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Doctor -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Doctor Name
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            <i class="bi bi-person-badge-fill text-primary me-2"></i>
+                                            @Model.DoctorName
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Date -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Appointment Date
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            <i class="bi bi-calendar-event text-success me-2"></i>
+                                            @Model.AppointmentDate
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Time -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Appointment Time
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            <i class="bi bi-clock-fill text-warning me-2"></i>
+                                            @Model.AppointmentTime
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Status -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Status
+                                        </small>
+
+                                        <div class="mt-2">
+
+                                            @if (Model.Status == "Completed")
+                                            {
+                                                <span class="badge bg-success px-4 py-2 rounded-pill fs-6">
+                                                    @Model.Status
+                                                </span>
+                                            }
+                                            else if (Model.Status == "Pending")
+                                            {
+                                                <span class="badge bg-warning text-dark px-4 py-2 rounded-pill fs-6">
+                                                    @Model.Status
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger px-4 py-2 rounded-pill fs-6">
+                                                    @Model.Status
+                                                </span>
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Created -->
+                                <div class="col-md-6">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Created At
+                                        </small>
+
+                                        <h5 class="fw-bold mt-1">
+                                            @Model.CreatedAt
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Problem -->
+                                <div class="col-12">
+
+                                    <div class="info-box">
+
+                                        <small class="text-muted fw-semibold">
+                                            Problem Description
+                                        </small>
+
+                                        <div class="bg-white border rounded-4 p-4 mt-2 shadow-sm">
+
+                                            @if (!string.IsNullOrEmpty(Model.ProblemDescription))
+                                            {
+                                                <p class="mb-0 text-dark">
+                                                    @Model.ProblemDescription
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">
+                                                    No description provided.
+                                                </span>
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex justify-content-between mt-5">
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary btn-lg rounded-3 px-4">
+
+                            <i class="bi bi-arrow-left me-2"></i>
+                            Back to List
+
+                        </a>
+
+                        <a asp-action="Edit"
+                           asp-route-id="@Model.Id"
+                           class="btn btn-primary btn-lg rounded-3 px-4 shadow">
+
+                            <i class="bi bi-pencil-square me-2"></i>
+                            Edit Appointment
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    body {
+        background: #f4f7fb;
+    }
+
+    .info-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        height: 100%;
+        transition: 0.3s ease;
+    }
+
+        .info-box:hover {
+            transform: translateY(-3px);
+        }
+
+</style>

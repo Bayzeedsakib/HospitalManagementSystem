@@ -50,5 +50,11 @@ namespace DAL.Repositories
             db.Doctors.Remove(exobj);
             return db.SaveChanges() > 0;
         }
+
+        public Doctor GetByUserId(int userId)
+        {
+            return db.Doctors
+                .FirstOrDefault(d => d.UserId == userId);
+        }
     }
 }

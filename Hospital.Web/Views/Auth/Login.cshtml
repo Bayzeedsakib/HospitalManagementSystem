@@ -1,38 +1,108 @@
 ﻿@model BLL.DTOs.UserDTO
 
-<h2>Login</h2>
-
-@if (TempData["Msg"] != null)
-{
-
-    <span class="alert alert-@TempData["Class"]">@TempData["Msg"]</span>
+@{
+    ViewData["Title"] = "Login";
 }
 
-@if (ViewBag.Message != null)
-{
-    <p style="color:red;">
-        @ViewBag.Message
-    </p>
-}
+<div style="
+    width:350px;
+    margin:60px auto;
+    padding:25px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    font-family:Arial;">
 
-<form method="post">
+    <h2 style="text-align:center; color:#2c3e50;">
+        Login
+    </h2>
 
-    <label>Email</label>
-    <input asp-for="Email" />
+    @if (TempData["Msg"] != null)
+    {
+        <div style="
+            padding:10px;
+            margin-bottom:15px;
+            border-radius:5px;
+            background-color:#f8f9fa;
+            color:green;">
+            @TempData["Msg"]
+        </div>
+    }
 
-    <br />
-    <br />
+    @if (ViewBag.Message != null)
+    {
+        <div style="
+            padding:10px;
+            margin-bottom:15px;
+            border-radius:5px;
+            background-color:#ffe6e6;
+            color:red;">
+            @ViewBag.Message
+        </div>
+    }
 
-    <label>Password</label>
-    <input asp-for="Password" type="password" />
+    <form method="post">
 
-    <br />
-    <br />
+        <div style="margin-bottom:15px;">
 
-    <button type="submit">Login</button>
+            <label style="font-weight:bold;">
+                Email
+            </label>
 
-</form>
+            <input asp-for="Email"
+                   type="email"
+                   placeholder="Enter your email"
+                   style="
+                        width:100%;
+                        padding:10px;
+                        margin-top:5px;
+                        border:1px solid #ccc;
+                        border-radius:5px;" />
+        </div>
 
-<br />
+        <div style="margin-bottom:20px;">
 
-<a asp-action="Register">Create New Account</a>
+            <label style="font-weight:bold;">
+                Password
+            </label>
+
+            <input asp-for="Password"
+                   type="password"
+                   placeholder="Enter your password"
+                   style="
+                        width:100%;
+                        padding:10px;
+                        margin-top:5px;
+                        border:1px solid #ccc;
+                        border-radius:5px;" />
+        </div>
+
+        <button type="submit"
+                style="
+                    width:100%;
+                    padding:10px;
+                    background-color:#3498db;
+                    color:white;
+                    border:none;
+                    border-radius:5px;
+                    font-size:16px;
+                    cursor:pointer;">
+
+            Login
+        </button>
+
+    </form>
+
+    <div style="text-align:center; margin-top:15px;">
+
+        <a asp-action="Register"
+           style="
+                text-decoration:none;
+                color:#3498db;">
+
+            Create New Account
+        </a>
+
+    </div>
+
+</div>

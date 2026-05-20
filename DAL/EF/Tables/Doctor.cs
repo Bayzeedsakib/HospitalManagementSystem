@@ -27,7 +27,11 @@ public partial class Doctor
 
     public int? MaxPatientsPerDay { get; set; }
 
+    public int? UserId { get; set; }
+
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
     public virtual Department Department { get; set; } = null!;
+
+    public virtual User? User { get; set; }
 }

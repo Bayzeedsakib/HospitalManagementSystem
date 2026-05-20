@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using DAL.EF.Tables;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -9,10 +10,14 @@ namespace Hospital.Web.Controllers
     {
         DoctorService service;
         DepartmentService Service;
-        public DoctorController(DoctorService service, DepartmentService Service)
+        AppointmentService appointmentservice;
+        UserService userService;
+        public DoctorController(DoctorService service, DepartmentService Service, AppointmentService appointmentservice, UserService us)
         {
             this.service = service;
             this.Service = Service;
+            this.appointmentservice = appointmentservice;
+            this.userService = us;
         }
         public IActionResult Index(string search)
         {
@@ -27,6 +32,38 @@ namespace Hospital.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult DoctorDashboard()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            
+            var doctor = service.GetByUserId(userId.Value);
+
+            if (doctor == null)
+            {
+                return RedirectToAction(
+                    "AccessDenied",
+                    "Auth"
+                );
+            }
+
+            
+            var appointments = appointmentservice.GetByDoctorId(doctor.Id);
+
+
+            
+            ViewBag.Doctor = doctor;
+
+            return View(appointments);
+        }
+
+        [HttpGet]
         public IActionResult GetById(int id)
         {
             ViewBag.Departments = new SelectList(Service.GetAll(), "Id", "Name");
@@ -37,6 +74,11 @@ namespace Hospital.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            var roleId = HttpContext.Session.GetInt32("RoleId");
+            if (roleId != 1)
+            {
+                return RedirectToAction("AccessDenied", "Auth");
+            }
             ViewBag.Departments = new SelectList(Service.GetAll(), "Id","Name");
             return View(new DoctorDTO()); 
         }
@@ -46,10 +88,12 @@ namespace Hospital.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var res = service.Create(d);
-                if(res == true)
+                var msg = service.Create(d);
+
+                TempData["Msg"] = msg;
+
+                if (msg.Contains("successfully"))
                 {
-                    TempData["Msg"] = "New doctor added successfully";
                     return RedirectToAction("Index");
                 }
             }

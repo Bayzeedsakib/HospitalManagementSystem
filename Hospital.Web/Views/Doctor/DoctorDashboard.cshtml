@@ -1,0 +1,156 @@
+﻿@{
+    var doctor = ViewBag.Doctor as BLL.DTOs.DoctorDTO;
+}
+
+@model List<BLL.DTOs.AppointmentDTO>
+
+@{
+    ViewData["Title"] = "Doctor Dashboard";
+}
+
+<div style="padding:20px; font-family:Arial;">
+
+    <h1 style="color:#2c3e50;">Doctor Dashboard</h1>
+
+    <!-- Doctor Information -->
+    <div style="margin-top:20px;">
+        <h2 style="color:#34495e;">Doctor Information</h2>
+
+        <table border="1" cellpadding="10"
+               style="border-collapse:collapse; width:50%;">
+
+            <tr style="background-color:#f2f2f2;">
+                <th align="left">Name</th>
+                <td>@doctor.Name</td>
+            </tr>
+
+            <tr>
+                <th align="left">Email</th>
+                <td>@doctor.Email</td>
+            </tr>
+
+            <tr style="background-color:#f2f2f2;">
+                <th align="left">Phone</th>
+                <td>@doctor.Phone</td>
+            </tr>
+
+            <tr>
+                <th align="left">Department</th>
+                <td>@doctor.DepartmentName</td>
+            </tr>
+
+            <tr style="background-color:#f2f2f2;">
+                <th align="left">Specialization</th>
+                <td>@doctor.Specialization</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <br />
+    <hr />
+
+    <!-- Appointments -->
+    <div style="margin-top:20px;">
+
+        <h2 style="color:#34495e;">My Appointments</h2>
+
+        <table border="1" cellpadding="10"
+               style="border-collapse:collapse; width:100%; text-align:center;">
+
+            <tr style="background-color:#2c3e50; color:white;">
+                <th>Patient Name</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Serial No</th>
+                <th>Status</th>
+                <th>Problem Description</th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PatientName</td>
+                    <td>@item.AppointmentDate</td>
+                    <td>@item.AppointmentTime</td>
+                    <td>@item.SerialNo</td>
+
+                    <td>
+                        @if (item.Status == "Pending")
+                        {
+                            <span style="color:orange; font-weight:bold;">
+                                @item.Status
+                            </span>
+                        }
+                        else if (item.Status == "Completed")
+                        {
+                            <span style="color:green; font-weight:bold;">
+                                @item.Status
+                            </span>
+                        }
+                        else
+                        {
+                            @item.Status
+                        }
+                    </td>
+
+                    <td>@item.ProblemDescription</td>
+
+                    <td>
+                        <a asp-controller="Prescription"
+                           asp-action="Create"
+                           asp-route-appointmentId="@item.Id"
+                           style="text-decoration:none;
+                                  background-color:#3498db;
+                                  color:white;
+                                  padding:6px 12px;
+                                  border-radius:5px;">
+                            Create Prescription
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <br />
+    <hr />
+
+    <!-- Quick Info -->
+    <div style="margin-top:20px;">
+
+        <h2 style="color:#34495e;">Quick Info</h2>
+
+        <ul style="font-size:16px;">
+            <li>
+                <strong>Total Appointments:</strong>
+                @Model.Count
+            </li>
+
+            <li>
+                <strong>Pending:</strong>
+                @Model.Count(x => x.Status == "Pending")
+            </li>
+
+            <li>
+                <strong>Completed:</strong>
+                @Model.Count(x => x.Status == "Completed")
+            </li>
+        </ul>
+    </div>
+
+    <br />
+
+    <a asp-controller="Auth"
+       asp-action="Logout"
+       style="background-color:#e74c3c;
+              color:white;
+              padding:10px 15px;
+              text-decoration:none;
+              border-radius:5px;">
+        Logout
+    </a>
+
+</div>

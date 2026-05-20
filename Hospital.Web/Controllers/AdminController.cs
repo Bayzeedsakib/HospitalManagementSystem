@@ -8,11 +8,13 @@ namespace Hospital.Web.Controllers
         PatientService patientservice;
         DoctorService doctorservice;
         DepartmentService departmentservice;
-        public AdminController(PatientService patientservice,DepartmentService departmentservice, DoctorService doctorservice)
+        AppointmentService appointmentservice;
+        public AdminController(PatientService patientservice,DepartmentService departmentservice, DoctorService doctorservice, AppointmentService appointmentservice)
         {
             this.patientservice = patientservice;
             this.departmentservice = departmentservice;
             this.doctorservice = doctorservice;
+            this.appointmentservice = appointmentservice;
         }
 
         //private bool IsAdmin()
@@ -41,7 +43,7 @@ namespace Hospital.Web.Controllers
             ViewBag.TotalPatients = patientservice.GetAll().Count;
             ViewBag.TotalDoctors = doctorservice.Get().Count;
             ViewBag.TotalDepartments = departmentservice.GetAll().Count;
-            //ViewBag.TotalAppointments = AppointmentService.GetAll().Count;
+            ViewBag.TotalAppointments = appointmentservice.GetAll().Count;
 
             return View();
         }

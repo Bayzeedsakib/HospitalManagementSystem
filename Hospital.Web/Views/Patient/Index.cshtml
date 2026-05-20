@@ -1,50 +1,89 @@
 ﻿@model List<BLL.DTOs.PatientDTO>
 
-<h2>Patient List</h2>
+@{
+    ViewData["Title"] = "Patient List";
+}
+
+<h2 class="mb-3">Patient List</h2>
 
 @if (TempData["msg"] != null)
 {
-    <p>@TempData["msg"]</p>
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
 }
 
-<form method="get">
-    <input type="text" name="search" placeholder="Search by Name or Phone" />
-    <button type="submit">Search</button>
-</form>
+<div class="d-flex justify-content-between align-items-center mb-3">
 
-<p>
-    <a asp-action="Create">Add Patient</a>
-</p>
+    <form method="get" class="d-flex gap-2">
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Search by Name or Phone" />
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Gender</th>
-        <th>Blood Group</th>
-        <th>Action</th>
-    </tr>
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </form>
 
-    @foreach (var p in Model)
-    {
-        <tr>
-            <td>@p.Id</td>
-            <td>@p.Name</td>
-            <td>@p.Phone</td>
-            <td>@p.Email</td>
-            <td>@p.Gender</td>
-            <td>@p.BloodGroup</td>
+    <a asp-action="Create" class="btn btn-success">
+        + Add Patient
+    </a>
 
-            <td>
-                
-                <a asp-action="GetById" asp-route-id="@p.Id">Details</a> |
+</div>
 
-                <a asp-action="Edit" asp-route-id="@p.Id">Edit</a> |
+<div class="card shadow-sm">
+    <div class="card-body p-0">
 
-                <a asp-action="Delete" asp-route-id="@p.Id">Delete</a>
-            </td>
-        </tr>
-    }
-</table>
+        <table class="table table-hover table-bordered mb-0">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Blood Group</th>
+                    <th style="width:180px;">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Name</td>
+                        <td>@p.Phone</td>
+                        <td>@p.Email</td>
+                        <td>@p.Gender</td>
+                        <td>@p.BloodGroup</td>
+
+                        <td>
+                            <a asp-action="GetById"
+                               asp-route-id="@p.Id"
+                               class="btn btn-sm btn-info">
+                                Details
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@p.Id"
+                               class="btn btn-sm btn-primary">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@p.Id"
+                               class="btn btn-sm btn-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
